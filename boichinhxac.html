@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bói Vui - Bí Mật Của Bạn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: black;
+            color: white;
+        }
+        h2 {
+            font-size: 24px;
+            text-shadow: 2px 2px 5px red;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px black;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h2>🔮 Nhập ngày tháng năm sinh để khám phá bí mật của bạn... 🔮</h2>
+    <input type="date" id="dob">
+    <button onclick="showInfo()">Xem kết quả</button>
+    <p id="result"></p>
+
+    <script>
+        // Kiểm tra xem người dùng đã từng nhập chưa
+        if (localStorage.getItem("seen")) {
+            document.body.innerHTML = "<h2>Bạn đã xem thông tin của mình rồi! Không thể xem lại.</h2>";
+        }
+
+        function showInfo() {
+            let dob = document.getElementById("dob").value;
+            if (!dob) {
+                alert("Vui lòng nhập ngày sinh!");
+                return;
+            }
+            
+            let info = "Tên bạn là Nguyễn Thị Bích Thùy, nhà ở Yến Nê 1, có 1 em gái và hiện đang học sư phạm.";
+            document.getElementById("result").innerText = info;
+            
+            // Lưu trạng thái để chặn truy cập lần sau
+            localStorage.setItem("seen", true);
+        }
+    </script>
+</body>
+</html>
